@@ -1,43 +1,35 @@
 import "./App.css"
-
-//CSS Modules
-import styles from './Estilos.module.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from "react";
+import NavBarComponent from "./components/NavBarComponent/NavBarComponent";
+import ButtonComponent from "./components/ButtonComponent/ButtonComponent";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 const App = () => {
-// CSS-in-JS
-// const divStyles = {
-//     color: 'red',
-//     backgroundColor: 'blue',
-//     fontSize: '20px',
-//     paddingTop: '10px',
 
-//   }
+const [count, setCount] = useState(0);
+
+const Sumar = () => {
+  setCount ( count + 1)
+}
+
+const Descartar = () => {
+  setCount ( count - 1)
+}
 
 
-  const name = 'Daniel';
-
-  var isOnline = true;
   
-  
+return (
+    
 
-  return (
-    // <div style={divStyles}>
-    //   Hola {name}!
-    // </div>
-    // <div style={{
-    //   color: 'red',
-    //   backgroundColor: 'blue',
-    //   fontSize: '20px',
-    //   paddingTop: '10px',
-    // }}>
-    //   Hola {name}!
-    // </div>
-    // <div className="aplicacion">
-    //   Hola {name}!
-    // </div>
-    <div className={ isOnline ? styles.online : styles.offline}>
-      Hola {name}!
-    </div>
+  <div>
+  < NavBarComponent />
+  <ItemListContainer greeting="Bienvenido a SuguruShop"/>
+    <h1>Contador de productos</h1>
+    <h2>{count}</h2>
+    < ButtonComponent  label="Sumar" bsButtonType="success"  onClickFunction={Sumar}/>
+    < ButtonComponent  label="Descartar" bsButtonType="danger"  onClickFunction={Descartar}/>
+    
+  </div>
   )
 }
 
